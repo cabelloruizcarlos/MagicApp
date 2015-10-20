@@ -28,3 +28,4 @@ proguard/
 *.log
 
 /captures
+app/src/main/res/raw/twocards.json

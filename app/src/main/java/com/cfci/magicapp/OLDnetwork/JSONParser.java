@@ -1,11 +1,11 @@
-package com.cfci.magicapp.network;
+package com.cfci.magicapp.OLDnetwork;
 
 import android.content.Context;
 
 import com.cfci.magicapp.R;
-import com.cfci.magicapp.model.Card;
-import com.cfci.magicapp.model.Constants;
-import com.cfci.magicapp.model.Util;
+import com.cfci.magicapp.OLDmodel.Card;
+import com.cfci.magicapp.OLDmodel.Constants;
+import com.cfci.magicapp.OLDmodel.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,10 +17,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Iterator;
 
+import butterknife.Bind;
+
 /**
  * Created by Carlos on 06/10/2015.
  */
 public class JSONParser {
+
+	@Bind(R.raw.twocards) static int jsonFile;
 
 	public static String retrieveData(InputStream result) {
 		StringBuilder sb = new StringBuilder();
@@ -44,7 +48,7 @@ public class JSONParser {
 		Card newCard = new Card();
 		JSONObject cardData = null;
 		try {
-			cardData = new JSONObject(JSONParser.retrieveData(pContext.getResources().openRawResource(R.raw.allcards)));
+			cardData = new JSONObject(JSONParser.retrieveData(pContext.getResources().openRawResource(jsonFile)));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -77,7 +81,7 @@ public class JSONParser {
 		Card[] cards = null;
 		JSONObject cardData = null;
 		try {
-			cardData = new JSONObject(JSONParser.retrieveData(pContext.getResources().openRawResource(R.raw.twocards)));
+			cardData = new JSONObject(JSONParser.retrieveData(pContext.getResources().openRawResource(jsonFile)));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

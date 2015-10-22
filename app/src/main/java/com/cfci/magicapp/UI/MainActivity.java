@@ -1,4 +1,4 @@
-package com.cfci.magicapp.activities;
+package com.cfci.magicapp.UI;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -7,14 +7,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cfci.magicapp.R;
-import com.cfci.magicapp.adapters.TestAdapter;
-import com.cfci.magicapp.model.Card;
-import com.cfci.magicapp.network.JSONParser;
+import com.cfci.magicapp.ODLadapters.TestAdapter;
+import com.cfci.magicapp.OLDmodel.Card;
+import com.cfci.magicapp.OLDnetwork.JSONParser;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by eca on 06/10/15.
  */
 public class MainActivity extends Activity {
+
+	@Bind(R.id.main_text) TextView textView;
 
 	private Card[] mCards;
 
@@ -23,8 +28,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main);
-
-		TextView textView = (TextView) findViewById(R.id.main_text);
+		ButterKnife.bind(this);
 
 		/*Code to test the Database*/
 		TestAdapter mDbHelper = new TestAdapter(getApplicationContext());

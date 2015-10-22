@@ -1,4 +1,4 @@
-package com.cfci.magicapp.adapters;
+package com.cfci.magicapp.ODLadapters;
 
 import java.io.IOException;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.cfci.magicapp.model.DataBaseHelper;
+import com.cfci.magicapp.OLDmodel.DataBaseHelper;
 
 /**
  * Created by Carlos on 20/10/2015.

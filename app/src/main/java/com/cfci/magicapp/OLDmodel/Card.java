@@ -1,4 +1,4 @@
-package com.cfci.magicapp.model;
+package com.cfci.magicapp.OLDmodel;
 
 /**
  * Created by Carlos on 06/10/2015.

@@ -1,4 +1,4 @@
-package com.cfci.magicapp.activities;
+package com.cfci.magicapp.UI;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,11 +11,15 @@ import android.view.WindowManager;
 
 import com.cfci.magicapp.R;
 
+import butterknife.Bind;
+
 /**
  * Created by Carlos on 20/10/2015.
  */
 public class LaunchActivity extends Activity {
 
+	@Bind(R.anim.enter_from_left) int enfl;
+	@Bind(R.anim.exit_from_left) int exfl;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +37,7 @@ public class LaunchActivity extends Activity {
 		if ((display.getRotation() == Surface.ROTATION_0) ||
 				(display.getRotation() == Surface.ROTATION_180))
 		{
-			overridePendingTransition(R.anim.enter_from_left, R.anim.exit_from_left);
+			overridePendingTransition(enfl, exfl);
 		}
 	}
 

@@ -17,14 +17,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Iterator;
 
-import butterknife.Bind;
-
 /**
  * Created by Carlos on 06/10/2015.
  */
 public class JSONParser {
-
-	@Bind(R.raw.twocards) static int jsonFile;
 
 	public static String retrieveData(InputStream result) {
 		StringBuilder sb = new StringBuilder();
@@ -48,7 +44,7 @@ public class JSONParser {
 		Card newCard = new Card();
 		JSONObject cardData = null;
 		try {
-			cardData = new JSONObject(JSONParser.retrieveData(pContext.getResources().openRawResource(jsonFile)));
+			cardData = new JSONObject(JSONParser.retrieveData(pContext.getResources().openRawResource(R.raw.twocards)));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -81,7 +77,7 @@ public class JSONParser {
 		Card[] cards = null;
 		JSONObject cardData = null;
 		try {
-			cardData = new JSONObject(JSONParser.retrieveData(pContext.getResources().openRawResource(jsonFile)));
+			cardData = new JSONObject(JSONParser.retrieveData(pContext.getResources().openRawResource(R.raw.twocards)));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

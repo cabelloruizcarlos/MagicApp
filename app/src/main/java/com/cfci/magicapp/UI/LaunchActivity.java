@@ -11,15 +11,10 @@ import android.view.WindowManager;
 
 import com.cfci.magicapp.R;
 
-import butterknife.Bind;
-
 /**
  * Created by Carlos on 20/10/2015.
  */
 public class LaunchActivity extends Activity {
-
-	@Bind(R.anim.enter_from_left) int enfl;
-	@Bind(R.anim.exit_from_left) int exfl;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +31,7 @@ public class LaunchActivity extends Activity {
 		Display display = ((WindowManager) 	getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 		if ((display.getRotation() == Surface.ROTATION_0) ||
 				(display.getRotation() == Surface.ROTATION_180))
-		{
-			overridePendingTransition(enfl, exfl);
-		}
+			overridePendingTransition(R.anim.enter_from_left, R.anim.exit_from_left);
 	}
 
 	private class InitAppTask extends AsyncTask<String, Void, String> {

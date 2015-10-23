@@ -28,23 +28,33 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main);
+/*
 		ButterKnife.bind(this);
 
-		/*Code to test the Database*/
+		*/
+/*Code to test the Database*//*
+
 		TestAdapter mDbHelper = new TestAdapter(getApplicationContext());
 		mDbHelper.createDatabase();
 		mDbHelper.open();
 		Cursor testdata = mDbHelper.getTestData();
 		mDbHelper.close();
 
-		/*Code to test the time to retrieve one card*/
-		/*If I ve all the cards in an array it takes no time*/
+		*/
+/*Code to test the time to retrieve one card*//*
+
+		*/
+/*If I ve all the cards in an array it takes no time*//*
+
 		mCards = JSONParser.getCards(getApplicationContext());
-		/*Getting it directly from the JSON takes ages
-		Card newCard = JSONParser.getCard(getApplicationContext(), "Air Elemental");*/
+		*/
+/*Getting it directly from the JSON takes ages
+		Card newCard = JSONParser.getCard(getApplicationContext(), "Air Elemental");*//*
+
 		Card newCard = getCard("Air Elemental");
 		if (newCard != null)
 			textView.setText(newCard.getName());
+*/
 
 		Toast.makeText(getApplicationContext(), "Its done!!!", Toast.LENGTH_SHORT).show();
 	}

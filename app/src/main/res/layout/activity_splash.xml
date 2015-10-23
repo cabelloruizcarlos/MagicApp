@@ -9,7 +9,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:id="@+id/splash_text"
-      android:text="This is the splash screen. I m loading the json file in the app"
+      android:text="This is the splash screen. It will be shown during 5sec."
       android:textAlignment="center"
       android:textColor="@android:color/white"
       android:textStyle="bold"

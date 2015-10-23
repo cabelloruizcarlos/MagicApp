@@ -3,30 +3,35 @@ package com.cfci.magicapp.UI;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
 
+import com.cfci.magicapp.Launch.ILaunchView;
+import com.cfci.magicapp.Launch.LaunchPresenter;
 import com.cfci.magicapp.R;
 
 /**
  * Created by Carlos on 20/10/2015.
  */
-public class LaunchActivity extends Activity {
+public class LaunchActivity extends Activity implements ILaunchView {
+
+	private final int SPLASH_DISPLAY_LENGTH = 5000;
+	LaunchPresenter mPresenter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.activity_splash);
 
-		InitAppTask task = new InitAppTask();
-		task.execute();
+		// Give to the Presenter a reference to the View
+		mPresenter = new LaunchPresenter(this);
+		mPresenter.initApp();
 	}
 
-	private void doPageTransitionAnimationRighttoLeft() {
+	public void doTransitionAnimationRighttoLeft() {
 
 		Display display = ((WindowManager) 	getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 		if ((display.getRotation() == Surface.ROTATION_0) ||
@@ -34,26 +39,17 @@ public class LaunchActivity extends Activity {
 			overridePendingTransition(R.anim.enter_from_left, R.anim.exit_from_left);
 	}
 
-	private class InitAppTask extends AsyncTask<String, Void, String> {
+	@Override
+	public void navigateToMainActivity(){
 
-		@Override
-		protected String doInBackground(String... String) {
-			try {
-				// Thread will sleep for 2 seconds
-				Thread.sleep(2 * 1000);
-			} catch (Exception e) {
-
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				Intent i = new Intent(LaunchActivity.this, MainActivity.class);
+				startActivity(i);
+				doTransitionAnimationRighttoLeft();
+				finish();
 			}
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-
-			Intent i = new Intent(LaunchActivity.this, MainActivity.class);
-			startActivity(i);
-			doPageTransitionAnimationRighttoLeft();
-			finish();
-		}
+		}, SPLASH_DISPLAY_LENGTH);
 	}
 }

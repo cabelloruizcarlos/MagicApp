@@ -1,23 +1,19 @@
 package com.cfci.magicapp.UI;
 
-import android.app.Activity;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cfci.magicapp.R;
-import com.cfci.magicapp.ODLadapters.TestAdapter;
-import com.cfci.magicapp.OLDmodel.Card;
-import com.cfci.magicapp.OLDnetwork.JSONParser;
+import com.cfci.magicapp.model.Card;
+import com.cfci.magicapp.model.MagicActivity;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by eca on 06/10/15.
  */
-public class MainActivity extends Activity {
+public class MainActivity extends MagicActivity {
 
 	@Bind(R.id.main_text) TextView textView;
 

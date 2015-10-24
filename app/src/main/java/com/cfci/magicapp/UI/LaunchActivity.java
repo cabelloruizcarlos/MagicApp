@@ -1,6 +1,5 @@
 package com.cfci.magicapp.UI;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +8,7 @@ import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
 
+import com.cfci.magicapp.model.MagicActivity;
 import com.cfci.magicapp.Launch.ILaunchView;
 import com.cfci.magicapp.Launch.LaunchPresenter;
 import com.cfci.magicapp.R;
@@ -16,7 +16,7 @@ import com.cfci.magicapp.R;
 /**
  * Created by Carlos on 20/10/2015.
  */
-public class LaunchActivity extends Activity implements ILaunchView {
+public class LaunchActivity extends MagicActivity implements ILaunchView {
 
 	private final int SPLASH_DISPLAY_LENGTH = 5000;
 	LaunchPresenter mPresenter;
@@ -28,7 +28,7 @@ public class LaunchActivity extends Activity implements ILaunchView {
 
 		// Give to the Presenter a reference to the View
 		mPresenter = new LaunchPresenter(this);
-		mPresenter.initApp();
+		mPresenter.initApp(this);
 	}
 
 	public void doTransitionAnimationRighttoLeft() {

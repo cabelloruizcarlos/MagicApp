@@ -1,11 +1,11 @@
-package com.cfci.magicapp.OLDnetwork;
+package com.cfci.magicapp.network;
 
 import android.content.Context;
 
 import com.cfci.magicapp.R;
-import com.cfci.magicapp.OLDmodel.Card;
-import com.cfci.magicapp.OLDmodel.Constants;
-import com.cfci.magicapp.OLDmodel.Util;
+import com.cfci.magicapp.model.Card;
+import com.cfci.magicapp.model.Constants;
+import com.cfci.magicapp.model.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,8 +40,11 @@ public class JSONParser {
 
 	/*Receiving the name of a card(parameter) the method returns a Card object. If the card isn't there its name will be Constants.NO_CARD_FOUND*/
 	public static Card getCard(Context pContext, String cardName) {
-		// TODO: Check if I can avoid to sent as a parameter the Context
-		Card newCard = new Card();
+		//TODO: Implement the way to retrieve one card using the Card[]
+
+
+		// TODO: Check how can I avoid to sent as a parameter the Context
+		/*Card newCard = new Card();
 		JSONObject cardData = null;
 		try {
 			cardData = new JSONObject(JSONParser.retrieveData(pContext.getResources().openRawResource(R.raw.twocards)));
@@ -50,7 +53,7 @@ public class JSONParser {
 		}
 
 		if (cardData.length() < 0) {
-			/*TODO: Define what are we going to do if the JSON file is empty*/
+			*//*TODO: Define what are we going to do if the JSON file is empty*//*
 		} else {
 			try {
 				Iterator x = cardData.keys();
@@ -69,15 +72,16 @@ public class JSONParser {
 		if (newCard.getName() == Constants.NO_CARD_FOUND)
 			return null;
 		else
-			return newCard;
+			return newCard;*/
+		return null;
 	}
 
-	public static Card[] getCards(Context pContext) {
+	public static Card[] getCards(InputStream cardsData) {
 
 		Card[] cards = null;
 		JSONObject cardData = null;
 		try {
-			cardData = new JSONObject(JSONParser.retrieveData(pContext.getResources().openRawResource(R.raw.twocards)));
+			cardData = new JSONObject(JSONParser.retrieveData(cardsData));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
